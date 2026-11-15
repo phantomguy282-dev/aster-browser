@@ -45,7 +45,7 @@ jobs:
           }
           $lines | Set-Content dist/SHA256SUMS.txt
           Get-Content dist/SHA256SUMS.txt | ForEach-Object { Write-Host $_ }
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: windows-build-${{ github.sha }}
           path: |

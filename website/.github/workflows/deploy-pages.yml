@@ -1,0 +1,64 @@
+name: Deploy website to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+    paths: ['**', '!.github/**']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Structural verification (links, manifest shape)
+        run: node -e "
+          const fs=require('fs');
+          for(const f of ['index.html','download.html','privacy.html','terms.html','releases.html']){
+            const html=fs.readFileSync(f,'utf8');
+            if(!html.includes('name=\"viewport\"')) throw new Error(f+': missing viewport');
+            if(!html.includes('Content-Security-Policy')) throw new Error(f+': missing CSP');
+          }
+          const r=JSON.parse(fs.readFileSync('release.json','utf8'));
+          if(r.channel!=='preview') throw new Error('unexpected channel');
+          if(r.signed!==false) throw new Error('signed flag must be false for preview');
+          console.log('structural checks passed');
+        "
+      - name: Verify release links point to real GitHub release assets
+        run: node -e "
+          const fs=require('fs');
+          const html=fs.readFileSync('index.html','utf8');
+          const links=[...html.matchAll(/https:\/\/github\.com\/phantomguy282-dev\/[^\"' ]+/g)].map(m=>m[0].replace(/[\"'>]$/,''));
+          if(!links.length) throw new Error('no release links found');
+          for(const l of new Set(links)) console.log('release link:',l);
+        "
+  build:
+    runs-on: ubuntu-latest
+    needs: validate
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

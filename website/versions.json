@@ -1,0 +1,26 @@
+{
+  "desktop": {
+    "version": "5.0.0",
+    "status": "preview",
+    "release_url": "https://github.com/phantomguy282-dev/aster-browser/releases/tag/v5.0.0",
+    "sha256": "ff8dec79fc1583f39733b924812c3461db775a31ff0a9a813d7106196d6a150b",
+    "file": "Aster-Setup-5.0.0.exe",
+    "requirements": "Windows 10/11 x64"
+  },
+  "android": {
+    "version": "4.0.0-preview.1",
+    "status": "preview",
+    "release_url": "https://github.com/phantomguy282-dev/aster-browser-android/releases/tag/v4.0.0-preview.1",
+    "sha256": "8f22b17a33301eefb9c55d0624b38527bcdb03ea17b8bfad4b9781a2f7c0fda3",
+    "file": "Aster-mobile-4.0.0-preview.1-debug.apk",
+    "requirements": "Android 9.0 (API 28)+"
+  },
+  "ios": {
+    "version": "4.0.0-preview",
+    "status": "development",
+    "release_url": "",
+    "sha256": "",
+    "file": "",
+    "requirements": "Source only — requires macOS + Xcode to build; no IPA exists"
+  }
+}

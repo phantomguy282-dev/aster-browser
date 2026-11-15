@@ -30,6 +30,6 @@ Read `AI_CONTEXT/PROJECT_OVERVIEW.md`, `CURRENT_STATUS.md`, `MOBILE_FEATURE_PARI
 
 - **2026-11-15 (session I)**: Phase 8 Reading Mode (desktop): `src/main/reading-mode.cjs` scored-density extractor (executeJavaScript in page context, no bridge), `readingExtract` IPC + menu entry; 4/4 tests; **173/173 suite**. Android documented platform-limited (JS bridge forbidden by security model). readerSource contract: returns function source; main invokes with `+"()"`.
 
-## Next steps
-1. Phase 8 remainder: translation (owner-gated provider), PiP (engine-dependent), search suggestions, web apps.
-2. Phases 9–14 per TASKS.md. iOS Mac-gated throughout.
+- **2026-11-15 (session J — endgame)**: Phase 13/14 complete. Desktop version → 5.0.0, built (`Aster-Setup-5.0.0.exe`, SHA-256 `ff8dec79…a150b`, asar verified to contain all new modules), released https://github.com/phantomguy282-dev/aster-browser/releases/tag/v5.0.0; source pushed to main (installers excluded from git). Android v4.0.0-preview.1 released (APK `8f22b17a…fda3`); source pushed 304ce88→f990424. Website updated (manifest→5.0.0 installer, verify+smoke PASS) and pushed 21be70c→526f1b8. RELEASE-NOTES-5.0.md + FINAL-REPORT-5.0.md (full parity matrix) written. TASKS.md closed out.
+
+## Session ended — all environment-feasible work complete.

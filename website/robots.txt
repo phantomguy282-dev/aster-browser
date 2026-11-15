@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://phantomguy282-dev.github.io/Aster-website/sitemap.xml

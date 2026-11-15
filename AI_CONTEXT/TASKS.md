@@ -18,13 +18,30 @@ Order follows `aster 5.0 advanced browser experience (semi-final).md`. Each task
 ## Phase 5 — Screenshots (desktop capture flows; mobile visible-page capture)
 ## Phase 6 — Advanced tab/session management (groups on mobile, recently closed, tab search)
 ## Phase 7 — Privacy/security dashboard parity
-## Phase 8 — Smart features (reading mode, PiP, translation, QR, search, web apps)
-## Phase 9 — Judged additions
-## Phase 10 — Unified design system pass
-## Phase 11 — Sync investigation (documented, no backend exists)
-## Phase 12 — Per-platform testing + regression
-## Phase 13 — Builds/releases/website (desktop 5.0 artifacts, Android release build if keystore arrives, website 5.0 sections)
-## Phase 14 — Final report with parity table
+## Phase 8 — Smart features
+- [x] Reading mode (desktop 4/4 tests; Android platform-limited documented; iOS Mac-gated)
+- [x] QR codes (desktop 3/3 tests; Android honest fallback)
+- [x] Search suggestions (pre-existing, verified)
+- [ ] Translation — blocked: needs owner-configured provider
+- [ ] Picture-in-Picture — platform-limited; engine-dependent
+- [ ] Website apps — desktop shortcuts exist; Android homescreen shortcuts deferred
+
+## Phase 9 — Judged additions: deferred (feature count already substantial; brief warns against padding)
+## Phase 10 — Design system: existing ASTER identity preserved throughout; no rebuild
+## Phase 11 — Sync: blocked (no backend exists; documented)
+## Phase 12 — Testing/QA
+- [x] Desktop 173/173; Android 15/15; website verify+smoke PASS
+- [ ] Device testing (no device/emulator available)
+- [ ] iOS testing (no Mac)
+
+## Phase 13 — Builds/releases/website: COMPLETE
+- [x] Desktop 5.0.0 built, verified (SHA-256 in FINAL-REPORT-5.0.md), released on GitHub
+- [x] Android APK preview.1 built, verified, released on GitHub (debug-signed; release signing owner-gated)
+- [x] Website updated with verified releases only
+- [ ] AAB (needs keystore); IPA (needs Xcode)
+
+## Phase 14 — Documentation and final report: COMPLETE
+- [x] RELEASE-NOTES-5.0.md, FINAL-REPORT-5.0.md (parity matrix, artifacts, hashes, owner requirements)
 
 ## Standing tasks
 - [ ] Android emulator or device for real device testing

@@ -1,10 +1,15 @@
-# ASTER Current Status (updated 2026-11-15)
+# ASTER Current Status (updated 2026-11-15 — ASTER 5.0 endgame)
 
-## Releases
-- **Desktop**: 3.0.14 installed and verified (`dist/Aster-Setup-3.0.14.exe`, SHA-256 `6370a2b8…25ab4`, unsigned preview). 147+ tests passing.
-- **Android**: real debug APK published — https://github.com/phantomguy282-dev/aster-browser-android/releases/tag/v4.0.0-preview (`Aster-mobile-4.0.0-preview-debug.apk`, 2,546,420 bytes, SHA-256 `92ddc82f7c90fd4b9d9633de7ec3dd568a1685cb0a952f4b8bb54da833c18b74`, debug certificate). Source on `main` (commit 304ce88). Release signing blocked on owner keystore.
-- **iOS**: source only on `main` (commit 28b59a4). Never compiled; blocked on Mac + Xcode.
-- **Website**: `#mobile` section links the verified APK only; iOS labeled unavailable. verify.cjs + smoke.cjs PASS.
+## Releases (all published and verified)
+- **Desktop 5.0.0**: https://github.com/phantomguy282-dev/aster-browser/releases/tag/v5.0.0 — `Aster-Setup-5.0.0.exe`, 122,200,847 bytes, SHA-256 `ff8dec79fc1583f39733b924812c3461db775a31ff0a9a813d7106196d6a150b`, unsigned preview. **173/173 tests**.
+- **Android v4.0.0-preview.1**: https://github.com/phantomguy282-dev/aster-browser-android/releases/tag/v4.0.0-preview.1 — APK 2,748,664 bytes, SHA-256 `8f22b17a33301eefb9c55d0624b38527bcdb03ea17b8bfad4b9781a2f7c0fda3`, debug-signed. **15/15 JVM tests**. Includes ASTER 5.0 parity features.
+- **iOS**: source-only (main branch), never compiled — Mac/Xcode-gated.
+- **Website**: https://github.com/phantomguy282-dev/Aster-website main — 5.0 sections, manifest matches the verified installer; verify.cjs + smoke.cjs PASS.
+
+## Final documents
+- `AI_CONTEXT/RELEASE-NOTES-5.0.md` — user-facing release notes
+- `AI_CONTEXT/FINAL-REPORT-5.0.md` — parity matrix, artifacts, hashes, owner requirements
+- `AI_CONTEXT/MOBILE_FEATURE_PARITY.md` — per-feature per-platform statuses
 
 ## Environment
 - Windows host. `mobile/.tools/`: JDK 21, Gradle 8.11.1, Android SDK (platform 35 + build-tools 35.0.0 + platform-tools installed; licenses accepted via CLI). adb present, **no devices/emulators**.

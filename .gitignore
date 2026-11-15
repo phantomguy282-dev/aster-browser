@@ -1,0 +1,16 @@
+node_modules/
+dist/
+tests/artifacts/
+*.log
+
+# Local mobile tools, credentials and generated build products
+mobile/.tools/
+mobile/**/.gradle/
+mobile/**/build/
+mobile/android/local.properties
+mobile/ios/DerivedData/
+mobile/ios/*.xcodeproj/
+*.keystore
+*.jks
+*.p12
+*.mobileprovision

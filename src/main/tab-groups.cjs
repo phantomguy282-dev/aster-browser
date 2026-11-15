@@ -1,0 +1,19 @@
+'use strict';
+const {randomUUID}=require('node:crypto');
+const COLORS=Object.freeze(['violet','blue','green','amber','rose','gray']);
+const UUID=/^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/;
+function name(value){if(typeof value!=='string'||!value.trim()||value.trim().length>40||/[\u0000-\u001f\u007f\u202a-\u202e\u2066-\u2069]/.test(value))throw Error('Group names must contain 1–40 printable characters');return value.trim();}
+class TabGroups{
+ constructor(browser){this.browser=browser;this.groups=[];const rows=browser.store.data.tabGroups;if(Array.isArray(rows))for(const row of rows.slice(0,50)){try{if(!row||!UUID.test(row.id)||!COLORS.includes(row.color)||this.groups.some(g=>g.id===row.id))continue;this.groups.push({id:row.id,name:name(row.name),color:row.color,collapsed:row.collapsed===true,private:false});}catch{}}}
+ tab(id){const t=this.browser.tabs.tabs.find(t=>t.id===id);if(!t)throw Error('Tab no longer exists');return t;}
+ resolve(id,isPrivate){if(!id)return null;return this.groups.find(g=>g.id===id&&g.private===isPrivate)||null;}
+ list(){return this.groups.map(g=>({...g,count:this.browser.tabs.tabs.filter(t=>t.groupId===g.id&&t.private===g.private).length}));}
+ persist(){this.browser.store.data.tabGroups=this.groups.filter(g=>!g.private).map(({id,name,color,collapsed})=>({id,name,color,collapsed:!!collapsed}));this.browser.tabs.persist();this.browser.emit();}
+ create(p){const t=this.tab(p.tabId),label=name(p.name);if(!COLORS.includes(p.color))throw Error('Invalid group color');if(this.groups.filter(g=>g.private===t.private).length>=50)throw Error('Group limit reached (50 per session type)');const group={id:randomUUID(),name:label,color:p.color,collapsed:false,private:t.private};const before=t.groupId,old=this.browser.store.data.tabGroups;this.groups.push(group);t.groupId=group.id;try{this.persist();}catch(e){this.groups=this.groups.filter(g=>g!==group);t.groupId=before;this.browser.store.data.tabGroups=old;this.browser.tabs.persist(false);throw e;}return {...group};}
+ assign({tabId,groupId}){const t=this.tab(tabId);if(groupId!==null&&groupId!==''&&!this.resolve(groupId,t.private))throw Error('Group does not belong to this browsing session');const previous=t.groupId;t.groupId=groupId||null;try{this.persist();}catch(e){t.groupId=previous;this.browser.tabs.persist(false);throw e;}return this.list();}
+ update({tabId,groupId,name:label,color}){const t=this.tab(tabId),g=this.resolve(groupId,t.private);if(!g)throw Error('Group not found in this browsing session');label=name(label);if(!COLORS.includes(color))throw Error('Invalid group color');const old={...g},rows=this.browser.store.data.tabGroups;Object.assign(g,{name:label,color});try{this.persist();}catch(e){Object.assign(g,old);this.browser.store.data.tabGroups=rows;throw e;}return this.list();}
+ remove({tabId,groupId}){const t=this.tab(tabId),g=this.resolve(groupId,t.private);if(!g)throw Error('Group not found in this browsing session');const old=this.groups,rows=this.browser.store.data.tabGroups,members=this.browser.tabs.tabs.filter(x=>x.groupId===g.id);this.groups=this.groups.filter(x=>x!==g);for(const member of members)member.groupId=null;try{this.persist();}catch(e){this.groups=old;this.browser.store.data.tabGroups=rows;for(const member of members)member.groupId=g.id;this.browser.tabs.persist(false);throw e;}return this.list();}
+ collapse({tabId,groupId,collapsed}){if(typeof collapsed!=='boolean')throw Error('Collapsed state must be a boolean');const t=this.tab(tabId),g=this.resolve(groupId,t.private);if(!g)throw Error('Group not found in this browsing session');const previous=g.collapsed,rows=this.browser.store.data.tabGroups;g.collapsed=collapsed;try{this.persist();}catch(e){g.collapsed=previous;this.browser.store.data.tabGroups=rows;throw e;}return this.list();}
+ clearPrivate(){this.groups=this.groups.filter(g=>!g.private);}
+}
+module.exports={TabGroups,COLORS,name};

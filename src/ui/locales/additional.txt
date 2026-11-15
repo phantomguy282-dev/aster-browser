@@ -1,0 +1,16 @@
+Language & startup|Idioma e inicialização|Idioma e inicio|Langue et démarrage|Sprache und Start|言語と起動|语言与启动|Lingua e avvio
+Save language and startup|Salvar idioma e inicialização|Guardar idioma e inicio|Enregistrer langue et démarrage|Sprache und Start speichern|言語と起動設定を保存|保存语言和启动设置|Salva lingua e avvio
+When Aster starts|Ao iniciar o Aster|Al iniciar Aster|Au démarrage d’Aster|Beim Start von Aster|Aster 起動時|Aster 启动时|All’avvio di Aster
+Restore normal tabs|Restaurar abas normais|Restaurar pestañas normales|Restaurer les onglets normaux|Normale Tabs wiederherstellen|通常のタブを復元|恢复普通标签页|Ripristina schede normali
+Open a new tab|Abrir nova aba|Abrir nueva pestaña|Ouvrir un nouvel onglet|Neuen Tab öffnen|新しいタブを開く|打开新标签页|Apri nuova scheda
+Open homepage|Abrir página inicial|Abrir página de inicio|Ouvrir la page d’accueil|Startseite öffnen|ホームページを開く|打开主页|Apri pagina iniziale
+Check automatically once per day|Verificar automaticamente uma vez por dia|Comprobar automáticamente una vez al día|Vérifier automatiquement une fois par jour|Einmal täglich automatisch prüfen|1 日 1 回自動確認|每天自动检查一次|Controlla automaticamente una volta al giorno
+Shortcut name|Nome do atalho|Nombre del acceso directo|Nom du raccourci|Name der Verknüpfung|ショートカット名|快捷方式名称|Nome scorciatoia
+Shortcut URL|URL do atalho|URL del acceso directo|URL du raccourci|URL der Verknüpfung|ショートカット URL|快捷方式网址|URL scorciatoia
+Remove shortcut|Remover atalho|Eliminar acceso directo|Supprimer le raccourci|Verknüpfung entfernen|ショートカットを削除|移除快捷方式|Rimuovi scorciatoia
+No bookmarks yet|Nenhum favorito ainda|Aún no hay marcadores|Aucun favori pour le moment|Noch keine Lesezeichen|まだブックマークはありません|尚无书签|Nessun segnalibro ancora
+Save a page you love to find it again.|Salve uma página de que gosta para encontrá-la novamente.|Guarda una página que te guste para volver a encontrarla.|Enregistrez une page aimée pour la retrouver.|Speichere eine Lieblingsseite, um sie wiederzufinden.|気に入ったページを保存して再び開けます。|保存喜爱的页面，方便再次找到。|Salva una pagina che ami per ritrovarla.
+Minimal|Minimalista|Minimalista|Minimaliste|Minimalistisch|ミニマル|简约|Minimale
+Aurora|Aurora|Aurora|Aurore|Polarlicht|オーロラ|极光|Aurora
+Midnight|Meia-noite|Medianoche|Minuit|Mitternacht|真夜中|午夜|Mezzanotte
+HTTPS protects your connection, not the trustworthiness of a website. Private browsing does not hide traffic from your network provider.|HTTPS protege a conexão, não garante a confiabilidade do site. A navegação privada não oculta o tráfego do provedor.|HTTPS protege la conexión, no garantiza la fiabilidad del sitio. La navegación privada no oculta el tráfico al proveedor.|HTTPS protège la connexion, pas la fiabilité du site. La navigation privée ne cache pas le trafic à votre fournisseur.|HTTPS schützt die Verbindung, nicht die Vertrauenswürdigkeit einer Website. Privates Surfen verbirgt den Verkehr nicht vor dem Internetanbieter.|HTTPS は接続を保護しますが、サイトの信頼性は保証しません。プライベート閲覧でもプロバイダーから通信は隠れません。|HTTPS 保护连接，但不保证网站可信。隐私浏览不会向网络提供商隐藏流量。|HTTPS protegge la connessione, non l’affidabilità del sito. La navigazione privata non nasconde il traffico al provider.

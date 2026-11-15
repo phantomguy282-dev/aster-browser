@@ -1,0 +1,3 @@
+9BD92A5F682864C61D09B833A8E9EFCBA1A994A644E67E556EBA37E7E07F7AEE  D:\dsh-workflow\projects\aster-browser\dist\Aster-Setup-3.0.13.exe
+71BCFE5FB3E73DE97409739207A34DA06097BCCFF3880E5810A7AD930A095ECB  D:\dsh-workflow\projects\aster-browser\dist\win-unpacked\Aster.exe
+9BD92A5F682864C61D09B833A8E9EFCBA1A994A644E67E556EBA37E7E07F7AEE  D:\dsh-workflow\projects\aster-browser\website\downloads\Aster-Setup-3.0.13.exe

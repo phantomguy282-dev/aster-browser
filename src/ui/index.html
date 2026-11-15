@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' https: http: data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<title>Aster</title>
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="expansion.css">
+<link rel="stylesheet" href="security-center.css">
+<link rel="stylesheet" href="premium.css">
+<script src="locales/catalogs.js" defer></script>
+<script src="i18n.js" defer></script>
+<script src="icons.js" defer></script>
+<script src="app.js" defer></script>
+<script src="pages.js" defer></script>
+<script src="expansion.js" defer></script>
+<script src="security-center.js" defer></script>
+<script src="setup.js" defer></script>
+<script src="profiles.js" defer></script>
+<script src="passwords.js" defer></script>
+<script src="workspaces.js" defer></script>
+<script src="tab-groups.js" defer></script>
+<script src="update-notice.js" defer></script>
+</head>
+<body data-theme="dark" data-background="aurora">
+<header id="chrome">
+<div class="tab-strip"><div class="brand-mark" aria-label="Aster"><span class="aster-symbol">✦</span></div><div id="tabs" role="tablist" aria-label="Open tabs"></div><button class="icon-button new-tab" data-action="newTab" title="New tab (Ctrl+T)" aria-label="New tab" data-icon="plus"></button><button class="icon-button" data-action="tabMenu" title="Tab actions" aria-label="Tab actions" data-icon="chevron"></button></div>
+<div class="toolbar"><div class="navigation"><button id="back" class="icon-button" data-action="back" title="Back" aria-label="Back" data-icon="back"></button><button id="forward" class="icon-button" data-action="forward" title="Forward" aria-label="Forward" data-icon="forward"></button><button id="reload" class="icon-button" data-action="reload" title="Reload (Ctrl+R)" aria-label="Reload" data-icon="reload"></button><button class="icon-button home-button" data-action="home" title="Home" aria-label="Home" data-icon="home"></button></div><form id="address-form" class="address"><button type="button" id="security" class="security icon-button" data-action="siteControl" aria-label="Site information and permissions" title="Site information and permissions"></button><input id="address-input" aria-label="Address and search bar" placeholder="Search or enter a web address" autocomplete="off" spellcheck="false"><span id="private-badge" hidden>Private</span><button id="bookmark-current" type="button" class="icon-button" data-action="bookmarkCurrent" title="Bookmark this page" aria-label="Bookmark this page" data-icon="star"></button></form><button class="icon-button" data-action="downloadsPage" title="Downloads (Ctrl+J)" aria-label="Downloads" data-icon="download"></button><button id="profile-toggle" class="button" data-action="profilesPage" title="Browser profiles" aria-label="Browser profiles">Default</button><button id="menu-toggle" class="icon-button" data-action="menu" title="Aster menu" aria-label="Aster menu" aria-expanded="false" data-icon="menu"></button></div>
+<button id="http-retry" data-action="retryHttp" hidden>HTTPS connection failed. Review an unencrypted HTTP retry…</button>
+<div id="tab-search-bar" hidden><input id="tab-search-input" aria-label="Search open tabs" placeholder="Filter open tabs by title or URL"><button data-action="tabSearch" class="button">Close tab search</button></div>
+<div id="bookmarks-bar" class="bookmarks-bar"></div>
+<form id="find-bar" hidden><span>Find in page</span><input id="find-input" aria-label="Find text" placeholder="Search this page"><button type="button" class="icon-button" data-action="findPrevious" title="Previous match" data-icon="up"></button><button type="submit" class="icon-button" title="Next match" data-icon="chevron"></button><button type="button" class="icon-button" data-action="stopFind" title="Close find" data-icon="close"></button></form>
+</header>
+<aside id="vertical-tabs" aria-label="Vertical tabs" hidden><div class="vertical-heading"><span>Open tabs</span><button class="icon-button" data-action="verticalTabs" aria-label="Use horizontal tabs" title="Use horizontal tabs">↔</button></div></aside>
+<main id="content" tabindex="-1"></main>
+<div id="overlay-shade" hidden></div>
+<div id="menu" class="popup menu" hidden></div>
+<div id="suggestions" class="popup suggestions" hidden></div>
+<div id="modal-layer" hidden><section id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title"></section></div>
+<div id="toast" role="status" aria-live="polite" hidden></div>
+</body></html>

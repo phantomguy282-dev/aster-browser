@@ -1,0 +1,3 @@
+6370A2B837B5E4FAC8DEC1CF2C325419C6AA4ADBC3558695FC8BDF1114025AB4  D:\dsh-workflow\projects\aster-browser\dist\Aster-Setup-3.0.14.exe
+39E020AF74177496ACE06452BCFFE846B23B7125BEDBCE6CF887CA37D0648CDF  D:\dsh-workflow\projects\aster-browser\dist\win-unpacked\Aster.exe
+6370A2B837B5E4FAC8DEC1CF2C325419C6AA4ADBC3558695FC8BDF1114025AB4  D:\dsh-workflow\projects\aster-browser\website\downloads\Aster-Setup-3.0.14.exe

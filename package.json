@@ -1,0 +1,104 @@
+{
+  "name": "aster-browser",
+  "version": "5.0.0",
+  "description": "Aster — a considered space for the web",
+  "author": "Aster Project",
+  "license": "MIT",
+  "private": true,
+  "main": "src/main/main.cjs",
+  "scripts": {
+    "start": "electron .",
+    "test": "node --test tests/*.test.cjs",
+    "test:integration": "node tests/integration.cjs",
+    "build": "electron-builder --win nsis --x64",
+    "pack": "electron-builder --win --dir --x64",
+    "test:expansion": "node tests/expansion-integration.cjs",
+    "test:vertical": "node tests/vertical-tabs.cjs",
+    "test:zoom": "node tests/site-zoom-real.cjs",
+    "test:state-publishing": "node tests/state-publishing-real.cjs",
+    "test:profiles": "node tests/profiles-real.cjs",
+    "test:groups": "node tests/tab-groups-real.cjs",
+    "test:group-collapse": "node tests/group-collapse-real.cjs",
+    "test:tab-focus": "node tests/tab-focus-real.cjs",
+    "test:workspaces": "node tests/workspaces-real.cjs",
+    "test:workspace-languages": "node tests/workspaces-language-real.cjs",
+    "test:setup-languages": "node tests/setup-language-real.cjs",
+    "test:security-languages": "node tests/security-language-real.cjs",
+    "test:tab-navigation": "node tests/tab-navigation-real.cjs"
+  },
+  "devDependencies": {
+    "electron": "45.3.2",
+    "electron-builder": "26.18.0",
+    "playwright": "^1.58.2"
+  },
+  "build": {
+    "appId": "app.aster.browser",
+    "productName": "Aster",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "src/main/**/*",
+      "src/ui/index.html",
+      "src/ui/styles.css",
+      "src/ui/app.js",
+      "src/ui/pages.js",
+      "src/ui/icons.js",
+      "assets/**/*",
+      "package.json",
+      "src/ui/expansion.js",
+      "src/ui/expansion.css",
+      "src/ui/i18n.js",
+      "src/ui/locales/*.js",
+      "src/ui/security-center.js",
+      "src/ui/security-center.css",
+      "src/ui/setup.js",
+      "src/ui/premium.css",
+      "src/ui/update-notice.js",
+      "src/ui/profiles.js",
+      "src/ui/tab-groups.js",
+      "src/ui/workspaces.js"
+    ],
+    "asar": true,
+    "win": {
+      "target": [
+        "nsis",
+        "portable"
+      ],
+      "icon": "assets/aster.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "artifactName": "Aster-Setup-${version}.${ext}",
+      "include": "scripts/installer.nsh",
+      "displayLanguageSelector": true,
+      "installerLanguages": [
+        "en_US",
+        "pt_BR",
+        "es_ES",
+        "fr_FR",
+        "de_DE",
+        "ja_JP",
+        "zh_CN",
+        "it_IT"
+      ],
+      "runAfterFinish": true,
+      "deleteAppDataOnUninstall": false
+    },
+    "portable": {
+      "artifactName": "Aster-Portable-${version}.exe"
+    }
+  },
+  "overrides": {
+    "minimatch": "^11.0.8"
+  },
+  "dependencies": {
+    "@ghostery/adblocker": "^2.20.3",
+    "jose": "^6.2.17",
+    "postcss": "^8.5.33",
+    "qrcode": "^1.5.4"
+  }
+}

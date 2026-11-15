@@ -1,0 +1,15 @@
+Keep something worth coming back to|Guarde algo que vale a pena rever|Guarda algo a lo que merezca volver|Gardez quelque chose qui mérite d’être retrouvé|Bewahre etwas auf, zu dem du zurückkehren möchtest|また訪れたいものを保存|收藏值得再次访问的内容|Conserva qualcosa a cui vale tornare
+Click the star in the address bar to save a page.|Clique na estrela na barra de endereços para salvar uma página.|Haz clic en la estrella de la barra de direcciones para guardar una página.|Cliquez sur l’étoile dans la barre d’adresse pour enregistrer une page.|Klicke auf den Stern in der Adressleiste, um eine Seite zu speichern.|アドレスバーの星をクリックしてページを保存します。|点击地址栏中的星标保存页面。|Fai clic sulla stella nella barra degli indirizzi per salvare una pagina.
+progressing|em andamento|en curso|en cours|läuft|進行中|进行中|in corso
+completed|concluído|completado|terminé|abgeschlossen|完了|已完成|completato
+cancelled|cancelado|cancelado|annulé|abgebrochen|キャンセル済み|已取消|annullato
+interrupted|interrompido|interrumpido|interrompu|unterbrochen|中断|已中断|interrotto
+ACCOUNT|CONTA|CUENTA|COMPTE|KONTO|アカウント|账号|ACCOUNT
+IMPORT|IMPORTAÇÃO|IMPORTACIÓN|IMPORTATION|IMPORT|インポート|导入|IMPORTAZIONE
+PROTECTION|PROTEÇÃO|PROTECCIÓN|PROTECTION|SCHUTZ|保護|保护|PROTEZIONE
+STUDIO|ESTÚDIO|ESTUDIO|STUDIO|STUDIO|スタジオ|工作室|STUDIO
+EXTENSIONS|EXTENSÕES|EXTENSIONES|EXTENSIONS|ERWEITERUNGEN|拡張機能|扩展程序|ESTENSIONI
+TASKS|TAREFAS|TAREAS|TÂCHES|AUFGABEN|タスク|任务|ATTIVITÀ
+PRIVACY|PRIVACIDADE|PRIVACIDAD|CONFIDENTIALITÉ|DATENSCHUTZ|プライバシー|隐私|PRIVACY
+UPDATES|ATUALIZAÇÕES|ACTUALIZACIONES|MISES À JOUR|UPDATES|更新|更新|AGGIORNAMENTI
+The action could not be completed.|Não foi possível concluir a ação.|No se pudo completar la acción.|L’action n’a pas pu être terminée.|Die Aktion konnte nicht abgeschlossen werden.|操作を完了できませんでした。|无法完成操作。|Impossibile completare l’azione.

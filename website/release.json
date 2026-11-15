@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "product": "Aster",
+  "version": "3.0.14",
+  "channel": "preview",
+  "platform": "Windows 10/11 x64",
+  "artifactDate": "2026-11-15T05:46:46.220Z",
+  "file": "downloads/Aster-Setup-3.0.14.exe",
+  "size": 121971209,
+  "sha256": "6370a2b837b5e4fac8dec1cf2c325419c6aa4adbc3558695fc8bdf1114025ab4",
+  "signed": false,
+  "notes": "Expansion preview. Review release notes and integration setup requirements before use."
+}

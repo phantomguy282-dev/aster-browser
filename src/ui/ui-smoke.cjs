@@ -1,0 +1,45 @@
+'use strict';
+// UI-only contract tests. No real browsing is claimed by this fixture.
+const { chromium } = require('playwright');
+const path = require('node:path');
+const assert = require('node:assert/strict');
+(async()=>{
+const browser=await chromium.launch({channel:'msedge',headless:true});
+const page=await browser.newPage({viewport:{width:1400,height:950}});
+const errors=[];page.on('pageerror',e=>errors.push(e.message));
+await page.addInitScript(()=>{
+window.calls=[];
+let listener;
+let s={tabs:[{id:'one',url:'aster://newtab',title:'New tab',private:false,loading:false}],activeId:'one',bookmarks:[],history:[],downloads:[],settings:{theme:'dark',background:'aurora',showBookmarksBar:true,searchEngine:'google',homeUrl:'aster://newtab',shortcuts:[]},permissions:[],cookies:[],version:'test'};
+window.testState=next=>{s={...s,...next};listener?.(s)};
+window.aster={onState:cb=>listener=cb,onFocusAddress:cb=>window.testFocus=cb,invoke:async(action,payload={})=>{window.calls.push({action,payload});if(action==='state')return s;if(action==='navigate'){s.tabs[0]={...s.tabs[0],url:payload.input};listener?.(s)}if(action==='settingsSave'){s.settings={...s.settings,...payload};listener?.(s)}if(action==='bookmarkSave'){s.bookmarks.push({...payload,id:'bookmark-test'});listener?.(s)}return {ok:true}}};
+});
+await page.goto('file:///'+path.join(__dirname,'index.html').replaceAll('\\','/'));
+await page.getByRole('heading',{name:'Where will your curiosity lead?'}).waitFor();
+assert.equal(await page.locator('#chrome').evaluate(e=>e.offsetHeight),126);
+await page.screenshot({path:path.join(__dirname,'ui-home-dark.png')});
+await page.locator('#home-search input').fill('https://example.com');await page.locator('#home-search').evaluate(e=>e.requestSubmit());
+await page.waitForFunction(()=>document.querySelector('#content').classList.contains('external'));
+assert.ok(await page.evaluate(()=>calls.some(c=>c.action==='navigate'&&c.payload.input==='https://example.com')));
+await page.locator('#menu-toggle').click();await page.getByRole('button',{name:'Settings',exact:true}).click();
+await page.getByRole('heading',{name:'Settings',exact:true}).waitFor();
+await page.locator('select[name=theme]').selectOption('light');await page.getByRole('button',{name:'Add shortcut',exact:true}).click();
+await page.locator('[name=shortcutTitle]').fill('Example');await page.locator('[name=shortcutUrl]').fill('https://example.com');await page.getByRole('button',{name:'Save settings',exact:true}).click();
+assert.equal(await page.locator('body').getAttribute('data-theme'),'light');
+await page.screenshot({path:path.join(__dirname,'ui-settings-light.png')});
+await page.locator('.sidebar [data-url="aster://bookmarks"]').click();await page.getByRole('button',{name:'Add bookmark',exact:true}).click();
+await page.locator('#modal [name=title]').fill('<img src=x onerror=alert(1)>');await page.locator('#modal [name=url]').fill('https://example.com');await page.locator('#modal button[type=submit]').click();
+assert.equal(await page.locator('#bookmark-results img').count(),0);
+assert.equal(await page.locator('#bookmark-results .row-title').textContent(),'<img src=x onerror=alert(1)>');
+await page.evaluate(()=>testState({tabs:[{id:'one',url:'aster://downloads',title:'Downloads'}],downloads:[{id:'d1',name:'file.zip',received:500,total:1000,speed:25,state:'progressing',paused:false}]}));
+await page.getByRole('button',{name:'Pause download',exact:true}).click();
+assert.ok(await page.evaluate(()=>calls.some(c=>c.action==='downloadAction'&&c.payload.action==='pause')));
+await page.evaluate(()=>testState({tabs:[{id:'one',url:'aster://newtab',title:'Private tab',private:true}]}));
+await page.getByRole('heading',{name:'Explore without a trace.'}).waitFor();
+await page.setViewportSize({width:760,height:800});await page.screenshot({path:path.join(__dirname,'ui-private-compact.png')});
+assert.equal(await page.locator('#content').evaluate(e=>e.scrollWidth<=e.clientWidth),true);
+await page.evaluate(()=>testFocus());assert.equal(await page.locator('#address-input').evaluate(e=>document.activeElement===e),true);
+assert.deepEqual(errors,[]);
+console.log('PASS: home, chrome geometry, navigation IPC, menu overlay, settings save, shortcut editing, bookmark escaping, downloads action, private view, compact layout, focus address; no page errors.');
+await browser.close();
+})().catch(error=>{console.error(error);process.exitCode=1});

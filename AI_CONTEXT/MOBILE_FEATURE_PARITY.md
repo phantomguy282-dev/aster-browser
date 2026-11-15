@@ -1,0 +1,28 @@
+# ASTER Cross-Platform Feature Parity
+
+Statuses: **Implemented and tested** / **Implemented, awaiting environment verification** / **Partially implemented** / **Platform-limited, alternative implemented** / **Not implemented** / **Blocked by external requirements**.
+
+| Feature | Desktop (3.0.14→5.0) | Android (4.0.0-preview) | iOS (source only) | Notes |
+|---|---|---|---|---|
+| Navigation / tabs | Implemented and tested (WebContentsView tabs) | Implemented, awaiting device verification (12 WebView tabs) | Implemented, awaiting Xcode verification | |
+| Bookmarks / history | Implemented and tested | Implemented, awaiting device verification | Implemented, awaiting Xcode verification | |
+| Downloads + safety guard | Implemented and tested (download-safety.cjs) | Implemented, awaiting device verification (DownloadGuard) | Implemented, awaiting Xcode verification (DownloadCoordinator) | Mobile: consent + HTTPS-only + 100 MiB + local checks, not antivirus |
+| Mobile Shield / content filtering | Implemented and tested (adblock + protection) | Implemented, awaiting device verification (user lists only) | Implemented, awaiting Xcode verification (content rules) | No bundled threat intelligence anywhere |
+| Private browsing | Implemented and tested | **Platform-limited**: unavailable (WebView storage process-scoped) | Implemented, awaiting Xcode verification (nonpersistent data store) | |
+| Password Manager | Implemented and tested (vault + IPC + settings UI page + menu entry; 154/154 tests incl. 7 vault tests; login-form capture pending) | Implemented, awaiting device verification (Keystore crypto + manager UI + persistence; 5/5 JVM tests; APK rebuilt SHA-256 FBC3C724…AB677; web-form autofill capture not possible without injection — documented) | Not implemented (Keychain store planned; requires Mac) | Phase 1 |
+| Autofill | Platform-limited, alternative implemented (origin-bound "suggest/copy" via Password Manager page; Chromium autofill APIs unavailable to Electron without injection — documented) | Platform-limited (no WebView autofill API; manager UI with touch-friendly copy flow) | Not implemented | Phase 1 |
+| Context menus | Implemented, awaiting app-level verification (element-aware native menus: links/images/text/editable/tab actions; 7/7 unit tests; wired to WebContentsView context-menu events) | Implemented, awaiting device verification (long-press link/image actions: open new tab, copy, share; page/tab action sheets: duplicate, close others; compiles; 15/15 JVM tests) | Not implemented | Phase 2; iOS long-press next (Mac-gated) |
+| Developer tools | Implemented and tested (Chromium DevTools via inspectElement/openDevTools + view-source tab; 3/3 Phase-3 tests) | Implemented, awaiting device verification (chrome://inspect remote debugging, debug builds only; no fake in-app panels) | Blocked by external requirements (isInspectable planned; needs Xcode) | Phase 3 |
+| Extensions | Partially implemented (Electron API subset, unpacked folders; security tests pass) | Platform-limited, alternative implemented (engine has no extension runtime — documented in PHASE4-EXTENSIONS.md; Mobile Shield lists as alternative) | Platform-limited, alternative implemented (Apple restrictions; SFContentRuleList blocking prepared) | Phase 4 |
+| Screenshots | Implemented, awaiting app-level verification (`captureCopy` clipboard command + existing `capturePage` save; 2/2 wiring tests) | Implemented, awaiting device verification (visible-page capture to Pictures/Aster via MediaStore; full-page not implemented — documented in-app) | Not implemented | Phase 5 |
+| Tab Management | Implemented and tested (groups, pin, search, workspaces — pre-existing 3.x) | Implemented, awaiting device verification (tab manager with reopen-closed, close-others, capture entry; 12-tab limit) | Partially implemented (session list only) | Phase 6; iOS groups deferred to Xcode session |
+| Tab groups / sessions | Implemented and tested (groups, workspaces, session restore) | Partially implemented (session tabs, no groups) | Partially implemented (session list, no groups) | Phase 6 |
+| Privacy Dashboard | Implemented and tested (security-center page — pre-existing 3.x) | Implemented, awaiting device verification (Security Center sheet: HTTPS, Safe Browsing, Shield counts, cookies, Download Guard, permissions, password vault status; compiles) | Not implemented | Phase 7 |
+| Reading mode | Not implemented | Not implemented | Not implemented | Phase 8 |
+| Picture-in-Picture | Not implemented | Not implemented | Not implemented | Phase 8; engine-dependent |
+| Translation | Not implemented | Not implemented | Not implemented | Phase 8; needs a real provider |
+| QR Codes | Implemented and tested (menu "Show QR code" + save; 3/3 tests; `qrcode` dep, URL-validated) | Platform-limited, alternative implemented (no bundled QR encoder in Android SDK — honest notice with copy/share fallback) | Not implemented | Phase 8 |
+| Reading Mode | Implemented and tested (menu "Reading mode" → DOM article extraction in page context, scored density algorithm, rendered in internal modal; 4/4 tests; only on article-like pages — honest error otherwise) | Platform-limited (no safe DOM extraction without a JS bridge, which the security model forbids — documented; closest alternative: zoom/text-size controls already present) | Not implemented | Phase 8; iOS extractor could reuse same algorithm on Mac |
+| Sync | Blocked by external requirements (no backend) | Same | Same | Phase 11; nothing to sync |
+
+Rules: never mark complete from UI alone; each cell must be backed by a test result or a documented external blocker. Update this table in the same session as any feature work.

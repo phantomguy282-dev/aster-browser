@@ -8,7 +8,7 @@
   "main": "src/main/main.cjs",
   "scripts": {
     "start": "electron .",
-    "test": "node --test tests/*.test.cjs",
+    "test": "node --test tests/account-refresh.test.cjs tests/account.test.cjs tests/adblock.test.cjs tests/capture-copy.test.cjs tests/context-menus.test.cjs tests/core.test.cjs tests/customization.test.cjs tests/devtools-phase3.test.cjs tests/extensions-security.test.cjs tests/hardening.test.cjs tests/i18n.test.cjs tests/migration.test.cjs tests/password-vault.test.cjs tests/profiles-i18n.test.cjs tests/profiles.test.cjs tests/protection.test.cjs tests/public-deployment.test.cjs tests/public-release-client.test.cjs tests/qr-share.test.cjs tests/reading-mode.test.cjs tests/security-i18n.test.cjs tests/setup-i18n.test.cjs tests/site-control.test.cjs tests/site-zoom.test.cjs tests/state-publisher.test.cjs tests/tab-groups.test.cjs tests/updates-transport.test.cjs tests/updates.test.cjs tests/url.test.cjs tests/vpn.test.cjs tests/workspaces-i18n.test.cjs tests/workspaces.test.cjs",
     "test:integration": "node tests/integration.cjs",
     "build": "electron-builder --win nsis --x64",
     "pack": "electron-builder --win --dir --x64",

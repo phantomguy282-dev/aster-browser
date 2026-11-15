@@ -14,3 +14,5 @@ mobile/ios/*.xcodeproj/
 *.jks
 *.p12
 *.mobileprovision
+
+website/downloads/

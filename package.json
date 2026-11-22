@@ -27,7 +27,7 @@
     "test:tab-navigation": "node tests/tab-navigation-real.cjs"
   },
   "devDependencies": {
-    "electron": "45.3.2",
+    "electron": "45.4.1",
     "electron-builder": "26.18.0",
     "playwright": "^1.58.2"
   },
